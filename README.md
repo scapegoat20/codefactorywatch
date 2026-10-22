@@ -3,10 +3,15 @@ PART 1:  DOCUMENTATION (PROJECT OBJECTIVE AND SYSTEM MODEL)
 UNIT CODE:  BCS 3106 (SOFTWARE ENGINEERING 2)
 STUDENT NUMBERS: 
 Steve Ryan Munyua- Bobitlmr386525
+
 Dennis Mwaura- Bobitlmr188225
+
 Faith Mwaura - Bobitlmr350025
+
 Newton mwali-Bobitlmr549325
+
 Ethern Kisilia- Bobitlmr119024  
+
 TITLE: CODEFACTORYWATCH (An SDLC infrastructure threat dashboard)
 PART 1: Project planning and requirement engineering.
 SUBMISSION DATE: 22-10-2026
