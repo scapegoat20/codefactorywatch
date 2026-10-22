@@ -11,6 +11,7 @@ TITLE: CODEFACTORYWATCH (An SDLC infrastructure threat dashboard)
 PART 1: Project planning and requirement engineering.
 SUBMISSION DATE: 22-10-2026
 GITHUB PROJECT: https://github.com/scapegoat20/codefactorywatch
+TRELLO PROJECT: https://trello.com/invite/b/6ad343a1b73632d55f6cb650/ATTI294d907899acf160f611e854a8f2138f45053CEF/codefactorywatch
  
 INTRODUCTION AND BACKGROUND.
 Attackers increasingly target systems that build software rather than finished product.
