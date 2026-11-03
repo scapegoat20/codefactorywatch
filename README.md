@@ -20,7 +20,7 @@ GITHUB PROJECT: https://github.com/scapegoat20/codefactorywatch
 TRELLO PROJECT: https://trello.com/invite/b/6ad343a1b73632d55f6cb650/ATTI294d907899acf160f611e854a8f2138f45053CEF/codefactorywatch
  
 INTRODUCTION AND BACKGROUND.
-Attackers increasingly target systems that build software rather than finished product.
+Attackers always increasingly target systems that build software rather than finished product.
 Using the SITF (SDLC Infrastructure Threat Framework) which describes the 5 pillars that make the codefactory (Endpoint/IDE, version control system, CI/CD, registry and production), we built our project which is a SITF dashboard that shows a dashboard view of how exposed each pillar is.
 Security analysts log SDLC findings on the web dashboard, map them to SITF pillars and techniques and monitor organization’s risk posture visually.
 
