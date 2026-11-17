@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row" style="justify-content:space-between;align-items:center">
+  <h1 style="margin:0">Findings</h1>
+  {% if perms.findings.add_finding %}<a class="btn" href="{% url 'finding_add' %}">+ New finding</a>{% endif %}
+</div>
+<form method="get" class="card row">
+  <div><label>Pillar</label><select name="pillar"><option value="">All</option>
+    {% for p in pillars %}<option {% if sel.pillar == p %}selected{% endif %}>{{ p }}</option>{% endfor %}</select></div>
+  <div><label>Severity</label><select name="severity"><option value="">All</option>
+    {% for s in severities %}<option {% if sel.severity == s %}selected{% endif %}>{{ s }}</option>{% endfor %}</select></div>
+  <div><label>Status</label><select name="status"><option value="">All</option>
+    {% for s in statuses %}<option {% if sel.status == s %}selected{% endif %}>{{ s }}</option>{% endfor %}</select></div>
+  <div style="flex:0"><button class="btn" type="submit">Filter</button></div>
+</form>
+<div class="card" style="overflow-x:auto">
+<table>
+  <tr><th>Title</th><th>Pillar</th><th>Technique</th><th>Severity</th><th>Status</th><th>Found</th><th></th></tr>
+  {% for f in findings %}
+  <tr>
+    <td>{{ f.title }}</td><td>{{ f.technique.pillar }}</td><td>{{ f.technique.code }}</td>
+    <td class="sev-{{ f.severity }}">{{ f.severity }}</td><td><span class="badge">{{ f.status }}</span></td><td>{{ f.date_found }}</td>
+    <td>{% if perms.findings.change_finding %}
+      <a href="{% url 'finding_edit' f.pk %}">Edit</a>
+      {% if f.status != "Closed" %}
+      <form method="post" action="{% url 'finding_close' f.pk %}" style="display:inline">{% csrf_token %}<button class="btn alt" type="submit">Close</button></form>
+      {% endif %}{% endif %}</td>
+  </tr>
+  {% empty %}<tr><td colspan="7">No findings match.</td></tr>{% endfor %}
+</table>
+</div>
+{% endblock %}

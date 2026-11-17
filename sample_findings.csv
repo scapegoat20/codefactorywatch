@@ -1,0 +1,5 @@
+title,pillar,technique_code,severity,status,date_found,description
+Cache poisoning in build runner,CI/CD,CICD-01,High,Open,2026-10-02,Shared cache written by untrusted job
+Unsigned commit merged to main,VCS,VCS-01,Medium,In Progress,2026-10-05,Commit author not verified
+Secrets found in repo history,VCS,VCS-02,Critical,Open,2026-10-09,API key committed in old commit
+Suspicious IDE extension,Endpoint/IDE,IDE-01,Medium,Resolved,2026-09-20,Extension removed from allow list

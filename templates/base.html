@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}CodeFactory Watch{% endblock %}</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1f2937;--mute:#6b7280;--line:#e5e7eb;--brand:#1f3a5f;--accent:#3d5a80;--bad:#b42318;--ok:#067647}
+@media (prefers-color-scheme:dark){:root{--bg:#111827;--card:#1f2937;--ink:#f3f4f6;--mute:#9ca3af;--line:#374151;--brand:#0b1220;--accent:#7aa2d6;--bad:#f97066;--ok:#47cd89}}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+nav{background:var(--brand);color:#fff;display:flex;gap:18px;align-items:center;padding:12px 24px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;opacity:.9}nav a:hover{opacity:1;text-decoration:underline}nav .brand{font-weight:700;margin-right:12px}nav .sp{flex:1}
+nav form{margin:0}nav button{background:none;border:1px solid #ffffff66;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer}
+main{max-width:1150px;margin:24px auto;padding:0 20px}
+h1{margin:0 0 16px;font-size:1.6rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.charts{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.kpi .n{font-size:2rem;font-weight:700}.kpi .l{color:var(--mute)}.crit .n{color:var(--bad)}
+img{max-width:100%;height:auto;display:block;margin:auto}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-weight:600}
+.btn,button.btn{background:var(--accent);color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block;font-size:.95rem}
+.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+input,select,textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font:inherit}
+label{display:block;margin:10px 0 4px;font-weight:600}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:14px}.row>div{flex:1;min-width:140px}
+.msg{padding:10px 14px;border-radius:8px;margin-bottom:12px;background:#e7f6ec;color:var(--ok)}.err,.errorlist{color:var(--bad)}.errorlist{padding-left:18px;margin:4px 0}
+.badge{padding:2px 8px;border-radius:10px;font-size:.8rem;border:1px solid var(--line)}
+.sev-Critical{color:var(--bad);font-weight:700}.sev-High{color:#c2570c;font-weight:600}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">CodeFactory Watch</span>
+  {% if user.is_authenticated %}
+  <a href="{% url 'dashboard' %}">Dashboard</a>
+  <a href="{% url 'finding_list' %}">Findings</a>
+  {% if perms.findings.add_finding %}<a href="{% url 'import_csv' %}">Import CSV</a>{% endif %}
+  <a href="{% url 'export_csv' %}">Export CSV</a>
+  {% if user.is_staff %}<a href="{% url 'admin:index' %}">Admin</a>{% endif %}
+  <span class="sp"></span><span>{{ user.username }}</span>
+  <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form>
+  {% endif %}
+</nav>
+<main>
+{% for m in messages %}<div class="msg">{{ m }}</div>{% endfor %}
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>

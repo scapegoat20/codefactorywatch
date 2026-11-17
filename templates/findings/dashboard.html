@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>SDLC risk dashboard</h1>
+<div class="grid kpis">
+  <div class="card kpi"><div class="n">{{ total }}</div><div class="l">Total findings</div></div>
+  <div class="card kpi"><div class="n">{{ open }}</div><div class="l">Open / in progress</div></div>
+  <div class="card kpi crit"><div class="n">{{ critical_open }}</div><div class="l">Critical and open</div></div>
+  <div class="card kpi"><div class="n">{{ resolved }}</div><div class="l">Resolved / closed</div></div>
+</div>
+<div class="grid charts" style="margin-top:16px">
+  <div class="card"><img alt="Bar chart of findings per SITF pillar" src="data:image/png;base64,{{ pillar_chart }}"></div>
+  <div class="card"><img alt="Bar chart of findings by severity" src="data:image/png;base64,{{ severity_chart }}"></div>
+</div>
+<div class="card" style="margin-top:16px"><img alt="Line chart of open versus resolved findings by month" src="data:image/png;base64,{{ trend_chart }}"></div>
+{% endblock %}

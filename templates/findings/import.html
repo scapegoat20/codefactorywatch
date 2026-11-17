@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Import findings from CSV</h1>
+<form method="post" enctype="multipart/form-data" class="card" style="max-width:640px">{% csrf_token %}
+  <p>Required header: <code>title,pillar,technique_code,severity,status,date_found,description</code><br>
+  Dates use YYYY-MM-DD. Maximum 1 MB. Valid rows are imported; rejected rows are listed below.</p>
+  {{ form.as_p }}
+  <button class="btn" type="submit">Import</button>
+</form>
+{% if errors %}
+<div class="card" style="margin-top:16px"><h2 class="err" style="margin-top:0">Rejected</h2>
+<ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% endif %}
+{% endblock %}
